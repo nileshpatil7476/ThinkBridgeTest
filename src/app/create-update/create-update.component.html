@@ -1,0 +1,78 @@
+<div  class="container-fluid py-4">
+    <!-- <form #form="ngForm" (submit)="onSubmit(form)"> -->
+        
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-title mx-15 px-15">
+                        ADD INVENTORY
+                    </div>
+                    <div class="card-body">
+                        <div class="row justify-content-center py-2">
+                            <div class="col-md-8">
+                                <div *ngIf="IsShow" [class]="alertclass" role="alert">
+                                    {{AlertMessage}}
+                                </div>
+                                <form novalidate #form="ngForm" (submit)="onSubmit(form)">
+                                    <div class="row">
+                                        <input type="hidden" name="id"
+                                            [value]="service.FormData.id"/>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Name</label>
+                                                <input type="text" class="form-control" name="name" placeholder="Please enter inventory name"
+                                                #name="ngModel" [(ngModel)]="service.FormData.name" required [class.invalid]="name.invalid && (name.dirty || name.touched)"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Description</label>
+                                                <input type="text" class="form-control" name="description" placeholder="Please enter description"
+                                                #description="ngModel" [(ngModel)]="service.FormData.description" required [class.invalid]="description.invalid && (description.dirty || description.touched)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Price</label>
+                                                <input type="text" class="form-control" name="price" placeholder="Please enter price"
+                                                #price="ngModel" [(ngModel)]="service.FormData.price" required [class.invalid]="price.invalid && (price.dirty || price.touched)"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Quantity</label>
+                                                <input type="text" class="form-control" name="quantity" placeholder="Please enter your contact no."
+                                                #quantity="ngModel" [(ngModel)]="service.FormData.quantity" required [class.invalid]="quantity.invalid && (quantity.dirty || quantity.touched)"/>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Expiry Date</label>
+                                                <input type="date" class="form-control" name="expiryDate" placeholder="Please enter Expirty Date" 
+                                                #expiryDate="ngModel" [(ngModel)]="service.FormData.expiryDate" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row" style="text-align: center;">
+                                        <div class="form-group">
+                                            <button class="btn btn-primary m-2" type="submit" [disabled]="form.invalid">SUBMIT</button>
+                                            <!-- <button class="btn btn-info m-2" form.reset>RESET</button> -->
+                                            <button type="button" class="btn btn-secondary m-2" routerLink="/list" on-click="form.resetForm()">BACK</button>
+                                        </div>
+                                    </div>
+                            </form>
+                             
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    <!-- </form> -->
+</div>

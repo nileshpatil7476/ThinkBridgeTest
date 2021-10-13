@@ -1,0 +1,45 @@
+<div class="contain-fluid p-2">
+    <div class="card">
+      <div class="card-title mx-15 px-15" style="text-align: center;">
+        <h3>INVENTORY LIST</h3>
+        <button type="button" class="btn btn-success" routerLink="/createUpdate" style="float:right">Add New Inventory</button>
+      </div>
+      <div class="card-body">
+        <div *ngIf="IsShow" [class]="alertclass" role="alert">
+          {{AlertMessage}}
+      </div>
+        <div class="table">
+          <table class="table table-bordered">
+            <thead class="thead-dark">
+              <tr>
+                <th>Sr.No.</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Expiry Date</th>
+                <th></th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let inv of service.list; let i=index;">
+                <td>{{ i + 1 }}</td>
+                <td (dblclick)="populateForm(inv)">{{inv.name}}</td>
+                <td (dblclick)="populateForm(inv)">{{inv.description}}</td>
+                <td (dblclick)="populateForm(inv)">{{inv.price}}</td>
+                <td (dblclick)="populateForm(inv)">{{inv.quantity}}</td>
+                <td (dblclick)="populateForm(inv)">{{inv.expiryDate | date:'dd/MM/yyyy'}}</td>
+                <td>
+                  <a class="btn btn-secondary" (click)="populateForm(inv)">Upadte</a>
+                </td>
+                <td>
+                  <a class="btn btn-danger" (click)="deleteUserData(inv.id)">Delete</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
